@@ -30,18 +30,17 @@ export class ExtraComponent implements OnInit {
                     setTimeout(() => {
                         this.addScripts([
                             'assets/3rd-scripts/slider.js',
+                            'assets/3rd-scripts/title.js',
                         ]);
                     }, 1000);
                     break;
                 case '':
                     console.log('home')
-                    this.usaYrdService.readHtml().subscribe(r => {
-                        this.addScripts([
-                            'assets/3rd-scripts/anime.min.js',
-                            'assets/3rd-scripts/main.js',
-                            'assets/3rd-scripts/hire-us.js',
-                        ])
-                    })
+                    this.addScripts([
+                        'assets/3rd-scripts/anime.min.js',
+                        'assets/3rd-scripts/main.js',
+                        'assets/3rd-scripts/hire-us.js',
+                    ])
                     break;
             }
         });

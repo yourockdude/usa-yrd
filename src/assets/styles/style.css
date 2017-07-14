@@ -104,7 +104,7 @@ nav a {
 
 .text:before {
   content:"";
-  animation:change 5s infinite;
+  animation:change 5s linear;
 }
 @keyframes change{
   0% {
@@ -144,6 +144,29 @@ nav a {
 
 .slider {
   margin-top: 5%;
+}
+
+.slider .item {
+  position: relative;
+}
+
+.slider section {
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  width: 80%;
+  background: rgba(45,45,48, 0.8);
+  padding: 2%;
+  display: none;
+}
+
+.slider h2 {
+  font-size: 30px;
+  margin-bottom: 5%;
+}
+
+.slider p {
+  font-size: 14px;
 }
 
 .contacts p {
@@ -190,6 +213,10 @@ dd {
 @media (max-width: 568px){
   nav {
     margin-top: 3%;
+  }
+  .slider section {
+    position: relative;
+    left: 8%;
   }
 }
 

@@ -1,8 +1,8 @@
 (function () {
     var formEl = document.querySelector('section.form'),
         revealer = new RevealFx(formEl),
-        closeCtrl = formEl.querySelector('.form__close');
-    send = formEl.querySelector('.send');
+        closeCtrl = formEl.querySelector('.form__close'),
+        send = formEl.querySelector('.send');
 
     document.querySelector('.btn--form-open').addEventListener('click', function () {
         revealer.reveal({
@@ -33,6 +33,5 @@
         });
     }
 
-    send.addEventListener('click', (e) => { e.preventDefault() })
-    formEl.addEventListener('submit', function (ev) { ev.preventDefault(); });
+    formEl.addEventListener('submit', function (ev) { ev.preventDefault(); console.log(ev) });
 })();

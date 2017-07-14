@@ -110,7 +110,7 @@ a:focus {
 }
 
 .js .form--open {
-    pointer-events: visible;
+    pointer-events: auto;
 }
 
 .form__inner {

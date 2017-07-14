@@ -34,4 +34,9 @@ export class UsaYrdService {
             return res._body;
         });
     }
+
+    hireUs(data) {
+        return this.http.post(`${environment.api}/hire_us`, data)
+            .map(res => res.json());
+    }
 }
