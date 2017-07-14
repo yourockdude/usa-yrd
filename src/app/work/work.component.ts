@@ -1,4 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {
+    Component,
+    OnInit,
+    ViewChild,
+    ElementRef,
+} from '@angular/core';
+import { NgbCarousel } from '@ng-bootstrap/ng-bootstrap';
+import { UsaYrdService } from '../shared/services/usa-yrd.service';
+declare var $;
 
 @Component({
     selector: 'yrd-work',
@@ -7,85 +15,59 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class WorkComponent implements OnInit {
-    slides = [
-        {
-            id: 1,
-            type: 0,
-            title: 'project 1',
-            site: 'yourockdude.com',
-            image: 'https://lorempixel.com/900/500?r=1',
-        },
-        {
-            id: 2,
-            type: 0,
-            title: 'project 2',
-            site: 'yourockdude.com',
-            image: 'https://lorempixel.com/900/500?r=2',
-        },
-        {
-            id: 3,
-            type: 0,
-            title: 'project 3',
-            site: 'yourockdude.com',
-            image: 'https://lorempixel.com/900/500?r=3',
-        },
-        {
-            id: 4,
-            type: 0,
-            title: 'project 4',
-            site: 'yourockdude.com',
-            image: 'https://lorempixel.com/900/500?r=4',
-        },
-        {
-            id: 5,
-            type: 1,
-            title: 'project 5',
-            site: 'yourockdude.com',
-            image: 'https://lorempixel.com/900/500?r=5',
-        },
-        {
-            id: 6,
-            type: 1,
-            title: 'project 6',
-            site: 'yourockdude.com',
-            image: 'https://lorempixel.com/900/500?r=6',
-        },
-    ]
+    @ViewChild('carousel') carousel;
 
-    SWIPE_ACTION = { LEFT: 'swipeleft', RIGHT: 'swiperight' };
-
+    slides = [];
     filteredSlides = [];
-    constructor() {
-        this.filteredSlides = this.slides;
+    type = 'all';
+
+    constructor(
+        private elementRef: ElementRef,
+        private usaYrdService: UsaYrdService
+    ) {
+        this.usaYrdService.getSlides().subscribe(res => {
+            if (res.success) {
+                this.slides = res.data;
+                this.filteredSlides = res.data;
+            } else {
+                console.log(res.error);
+            }
+        })
     }
 
-    ngOnInit() { }
-
-    swipe(currentIndex: any, action = this.SWIPE_ACTION.RIGHT) {
-        if (action === this.SWIPE_ACTION.RIGHT) {
-            console.log('swipe right');
-            currentIndex.next();
-            console.log(currentIndex)
-        }
-
-        if (action === this.SWIPE_ACTION.LEFT) {
-            console.log('swipe left');
-            currentIndex.prev();
-            console.log(currentIndex)
-        }
+    ngOnInit() {
+        this.runCarousel();
     }
 
-    filter(type?) {
+    runCarousel() {
+        setTimeout(() => {
+            $(document).ready(function () {
+                $('.owl-carousel').owlCarousel({
+                    loop: true,
+                    margin: 0,
+                    nav: true,
+                    items: 1
+                });
+            });
+        }, 1000);
+    }
+
+    filter(type) {
+        this.type = type;
         switch (type) {
-            case 0:
+            case 'desktop':
+                this.runCarousel();
                 this.filteredSlides = this.slides.filter(s => s.type === 0);
                 break;
-            case 1:
+            case 'mobile':
+                this.runCarousel();
                 this.filteredSlides = this.slides.filter(s => s.type === 1);
                 break;
-            default:
+            case 'all':
+                this.runCarousel();
                 this.filteredSlides = this.slides;
                 break;
         }
+        console.log(this.filteredSlides);
     }
 }

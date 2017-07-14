@@ -1,22 +1,14 @@
-<div class="col">
-    <div ngbDropdown class="d-inline-block">
-        <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Toggle dropdown</button>
-        <div class="dropdown-menu" aria-labelledby="dropdownBasic1">
-            <button class="dropdown-item" (click)="filter()">Show All</button>
-            <button class="dropdown-item" (click)="filter(0)">Show Mobile</button>
-            <button class="dropdown-item" (click)="filter(1)">Show Desktop</button>
-        </div>
-    </div>
+<div class="filter">
+    Filter
+    <span (click)="filter('all')" [ngClass]="{active: type === 'all'}">All</span>
+    <span (click)="filter('mobile')" [ngClass]="{active: type === 'mobile'}">Mobile</span>
+    <span (click)="filter('desktop')" [ngClass]="{active: type === 'desktop'}">Desktop</span>
 </div>
 
-<div class="carousel">
-    <ngb-carousel #test>
-        <ng-template ngbSlide *ngFor="let slide of filteredSlides; let idx=index">
-            <img src="{{slide.image}}" alt="Random first slide" (swipeleft)="swipe(test, $event.type)" (swiperight)="swipe(test, $event.type)">
-            <div class="carousel-caption">
-                <h3>{{slide.title}}</h3>
-                <p>{{slide.site}}</p>
-            </div>
-        </ng-template>
-    </ngb-carousel>
+<div class="slider">
+    <div class="owl-carousel" #carousel>
+        <div class="item" *ngFor="let slide of filteredSlides">
+            <img src="{{slide.image}}">
+        </div>
+    </div>
 </div>
