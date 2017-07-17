@@ -20,6 +20,18 @@ export class WorkComponent implements OnInit {
     slides = [];
     filteredSlides = [];
     type = 'all';
+    carouselOptions = {
+        items: 1,
+        dots: false,
+        navigation: false,
+        loop: true,
+        margin: 0,
+    }
+    carouselClasses = [
+        'owl-theme',
+        'row',
+        'sliding',
+    ]
 
     constructor(
         private elementRef: ElementRef,
@@ -35,37 +47,20 @@ export class WorkComponent implements OnInit {
         })
     }
 
-    ngOnInit() {
-        this.runCarousel();
-    }
-
-    runCarousel() {
-        setTimeout(() => {
-            $('.owl-carousel').owlCarousel({
-                loop: true,
-                margin: 0,
-                nav: true,
-                items: 1
-            });
-        }, 1000);
-    }
+    ngOnInit() { }
 
     filter(type) {
         this.type = type;
         switch (type) {
             case 'desktop':
-                this.runCarousel();
                 this.filteredSlides = this.slides.filter(s => s.type === 0);
                 break;
             case 'mobile':
-                this.runCarousel();
                 this.filteredSlides = this.slides.filter(s => s.type === 1);
                 break;
             case 'all':
-                this.runCarousel();
                 this.filteredSlides = this.slides;
                 break;
         }
-        console.log(this.filteredSlides);
     }
 }

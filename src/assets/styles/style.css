@@ -132,15 +132,15 @@ nav a {
   cursor: pointer;
 }
 
-.slider {
+.item {
   margin-top: 5%;
 }
 
-.slider .item {
+.item {
   position: relative;
 }
 
-.slider section {
+.item section {
   position: absolute;
   top: 20%;
   left: 10%;
@@ -150,12 +150,12 @@ nav a {
   display: none;
 }
 
-.slider h2 {
+.item h2 {
   font-size: 30px;
   margin-bottom: 5%;
 }
 
-.slider p {
+.item p {
   font-size: 14px;
 }
 
