@@ -3,6 +3,7 @@ import {
     OnInit,
     ViewChild,
     ElementRef,
+    OnDestroy,
 } from '@angular/core';
 import { NgbCarousel } from '@ng-bootstrap/ng-bootstrap';
 import { UsaYrdService } from '../shared/services/usa-yrd.service';
@@ -14,7 +15,7 @@ declare var $;
     styleUrls: ['work.component.scss'],
 })
 
-export class WorkComponent implements OnInit {
+export class WorkComponent implements OnInit, OnDestroy {
     @ViewChild('carousel') carousel;
 
     slides = [];
@@ -37,6 +38,10 @@ export class WorkComponent implements OnInit {
         private elementRef: ElementRef,
         private usaYrdService: UsaYrdService
     ) {
+        document.body.className = 'animated bounceInRight';
+        setTimeout(function () {
+            document.body.className = ''
+        }, 1000);
         this.usaYrdService.getSlides().subscribe(res => {
             if (res.success) {
                 this.slides = res.data;
@@ -47,7 +52,11 @@ export class WorkComponent implements OnInit {
         })
     }
 
-    ngOnInit() { }
+    ngOnInit() {
+    }
+
+    ngOnDestroy(): void {
+    }
 
     filter(type) {
         this.type = type;

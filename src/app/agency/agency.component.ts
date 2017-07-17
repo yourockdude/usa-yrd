@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
     selector: 'yrd-agency',
@@ -6,52 +6,15 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['agency.component.scss']
 })
 
-export class AgencyComponent implements OnInit {
-    slides = [
-        {
-            id: 1,
-            type: 0,
-            title: 'project 1',
-            site: 'yourockdude.com',
-            image: 'https://unsplash.it/800/500/?random=1',
-        },
-        {
-            id: 2,
-            type: 0,
-            title: 'project 2',
-            site: 'yourockdude.com',
-            image: 'https://unsplash.it/800/500/?random=2',
-        },
-        {
-            id: 3,
-            type: 0,
-            title: 'project 3',
-            site: 'yourockdude.com',
-            image: 'https://unsplash.it/800/500/?random=3',
-        },
-        {
-            id: 4,
-            type: 0,
-            title: 'project 4',
-            site: 'yourockdude.com',
-            image: 'https://unsplash.it/800/500/?random=4',
-        },
-        {
-            id: 5,
-            type: 1,
-            title: 'project 5',
-            site: 'yourockdude.com',
-            image: 'https://unsplash.it/800/500/?random=5',
-        },
-        {
-            id: 6,
-            type: 1,
-            title: 'project 6',
-            site: 'yourockdude.com',
-            image: 'https://unsplash.it/800/500/?random',
-        },
-    ]
-    constructor() { }
+export class AgencyComponent implements OnInit, OnDestroy {
+    constructor() {
+        document.body.className = 'animated bounceInRight';
+        setTimeout(function () {
+            document.body.className = ''
+        }, 1000);
+    }
 
     ngOnInit() { }
+
+    ngOnDestroy(): void { }
 }

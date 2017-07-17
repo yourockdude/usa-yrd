@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, AfterViewInit, ViewChild, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms'
 import { UsaYrdService } from '../shared/services/usa-yrd.service';
 
@@ -9,21 +9,28 @@ import { UsaYrdService } from '../shared/services/usa-yrd.service';
     providers: [UsaYrdService]
 })
 
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
     @ViewChild('section') section: ElementRef;
 
     hireUsForm: FormGroup;
-    test = '222222';
 
     constructor(
         private elementRef: ElementRef,
         private usaYrdService: UsaYrdService,
         private formBuilder: FormBuilder,
     ) {
+        document.body.className = 'animated bounceInRight';
+        setTimeout(function () {
+            document.body.className = ''
+        }, 1000);
         this.buildForm();
     }
 
-    ngOnInit() { }
+    ngOnInit() {
+    }
+
+    ngOnDestroy(): void {
+    }
 
     buildForm() {
         this.hireUsForm = this.formBuilder.group({

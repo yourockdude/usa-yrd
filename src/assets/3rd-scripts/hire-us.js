@@ -1,3 +1,6 @@
+$('.hire_us').delay(900).fadeIn(1000);
+$('.text').delay(900).fadeIn(1000);
+
 var formEl = document.querySelector('section.form'),
     revealer = new RevealFx(formEl),
     closeCtrl = formEl.querySelector('.form__close'),
