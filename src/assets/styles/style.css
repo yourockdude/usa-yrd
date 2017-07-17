@@ -1,17 +1,9 @@
 @font-face {
-  font-family: 'SFCompactDisplay-Regular';
-  src: url('/assets/fonts/SFCompactDisplay-Regular.otf'),
-       url('/assets/fonts/SFCompactDisplay-Regular.woff') format('woff'),
-       url('/assets/fonts/SFCompactDisplay-Regular.svg#SFCompactDisplay-Regular') format('svg');
+  font-family: 'DINProBold';
+  src: url('../fonts/DINProBold.otf'),
+       url('../fonts/DINProBold.woff') format('woff'),
+       url('../fonts/DINProBold.svg#DINProBold') format('svg');
 }
-
-@font-face {
-  font-family: 'DIN-RegularAlternate';
-  src: url('/assets/fonts/DIN-RegularAlternate.otf'),
-       url('/assets/fonts/DIN-RegularAlternate.woff') format('woff'),
-       url('/assets/fonts/DIN-RegularAlternate.svg#DIN-RegularAlternate') format('svg');
-}
-
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -46,8 +38,7 @@ body {
   background: #000;
   color: #fff;
   padding: 2%;
-  font-family: 'DIN-RegularAlternate';
-  font-weight: bold;
+  font-family: 'DINProBold';
 }
 
 header {
@@ -90,9 +81,8 @@ nav a {
   cursor: pointer;
   outline: none;
   border: none;
-  font-family: 'DIN-RegularAlternate';
-  font-weight: bold;
   font-size: 16px;
+  font-weight: bold;
 }
 
 .text {
@@ -104,7 +94,7 @@ nav a {
 
 .text:before {
   content:"";
-  animation:change 5s linear;
+  animation:change 5s infinite;
 }
 @keyframes change{
   0% {
@@ -155,7 +145,7 @@ nav a {
   top: 20%;
   left: 10%;
   width: 80%;
-  background: rgba(45,45,48, 0.8);
+  background: rgba(0,65,255, 0.7);
   padding: 2%;
   display: none;
 }
@@ -192,6 +182,10 @@ dd {
 
 .accordeon .active {
   color: #2d2d30;
+}
+
+.accordeon dl dd {
+  display: none;
 }
 
 .accordeon {

@@ -41,13 +41,11 @@ export class WorkComponent implements OnInit {
 
     runCarousel() {
         setTimeout(() => {
-            $(document).ready(function () {
-                $('.owl-carousel').owlCarousel({
-                    loop: true,
-                    margin: 0,
-                    nav: true,
-                    items: 1
-                });
+            $('.owl-carousel').owlCarousel({
+                loop: true,
+                margin: 0,
+                nav: true,
+                items: 1
             });
         }, 1000);
     }

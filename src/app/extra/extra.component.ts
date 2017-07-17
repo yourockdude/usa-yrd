@@ -27,12 +27,12 @@ export class ExtraComponent implements OnInit {
                     break;
                 case 'work':
                     console.log('work');
-                    setTimeout(() => {
-                        this.addScripts([
-                            'assets/3rd-scripts/slider.js',
-                            'assets/3rd-scripts/title.js',
-                        ]);
-                    }, 1000);
+                    // setTimeout(() => {
+                    //     this.addScripts([
+                    //         'assets/3rd-scripts/slider.js',
+                    //         'assets/3rd-scripts/title.js',
+                    //     ]);
+                    // }, 1000);
                     break;
                 case '':
                     console.log('home')
